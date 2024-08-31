@@ -1,0 +1,55 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  /* color: #f0f0f0;
+  background-color: #242424; */
+
+  /* color: #f0f0f0;
+  background-color: #02080b; */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body[data-theme='dark'] {
+  --colors-text: #f0f0f0;
+  --colors-bg: #02080b;
+}
+body[data-theme='light'] {
+  --colors-text: #02080b;
+  --colors-bg: #f0f0f0;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: var(--colors-text);
+  background-color: var(--colors-bg);
+}
+
+header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-btns {
+  display: flex;
+  gap: 10px;
+}
+
+.header-btns--btn {
+  color: var(--colors-text);
+}
+
+.theme-switcher-con {
+  cursor: pointer;
+  text-transform: capitalize;
+}
