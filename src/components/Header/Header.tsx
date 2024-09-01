@@ -1,9 +1,10 @@
-import { ThemeSwitcher } from '../../features/themeSwitcher/ThemeSwitcher'
+import { ThemeSwitcher } from './ThemeSwitcher'
 import { HeaderBtns } from './HeaderBtns'
+import styles from './Header.module.scss'
 
 export const Header = () => (
-  <header className="data-theme">
-    <h3>MoviesWaht?</h3>
+  <header className={styles['header']}>
+    <h3>MoviesWhat?</h3>
     <HeaderBtns />
     <ThemeSwitcher />
   </header>

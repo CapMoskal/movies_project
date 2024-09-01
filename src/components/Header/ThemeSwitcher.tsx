@@ -1,12 +1,16 @@
 import { MoonFilled, SunFilled } from '@ant-design/icons'
-import { useTheme } from './use-theme'
+import { useTheme } from '../../features/themeSwitcher/use-theme'
+import styles from './Header.module.scss'
 
 export const ThemeSwitcher = () => {
   const [theme, toggleTheme] = useTheme()
   const btnStyle = { color: '--colors-text', fontSize: '22px' }
 
   return (
-    <div className="theme-switcher-con" onClick={toggleTheme}>
+    <div
+      className={styles['theme-switcher-con']}
+      onClick={toggleTheme}
+    >
       {theme === 'light' ? (
         <MoonFilled style={btnStyle} />
       ) : (
@@ -15,7 +19,3 @@ export const ThemeSwitcher = () => {
     </div>
   )
 }
-
-// сделать модальные стили
-// индекс стилей сделать сасс
-// настроить стиль кнопок в хедере

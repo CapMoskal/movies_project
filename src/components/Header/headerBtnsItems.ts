@@ -1,6 +1,6 @@
 export const headerBtnsItems = [
   { to: '/', title: 'Главная' },
-  { to: '/', title: 'Мое' },
-  { to: '/', title: 'Фильмы' },
-  { to: '/', title: 'Сериалы' },
+  { to: 'my', title: 'Мое' },
+  { to: 'movies', title: 'Фильмы' },
+  { to: 'serials', title: 'Сериалы' },
 ]

@@ -4,11 +4,6 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  /* color: #f0f0f0;
-  background-color: #242424; */
-
-  /* color: #f0f0f0;
-  background-color: #02080b; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -31,25 +26,5 @@ body {
   min-height: 100vh;
   color: var(--colors-text);
   background-color: var(--colors-bg);
-}
-
-header {
-  padding: 10px 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header-btns {
-  display: flex;
-  gap: 10px;
-}
-
-.header-btns--btn {
-  color: var(--colors-text);
-}
-
-.theme-switcher-con {
-  cursor: pointer;
-  text-transform: capitalize;
+  --colors-orange: rgb(255, 153, 0);
 }

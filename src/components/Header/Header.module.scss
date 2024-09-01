@@ -1,0 +1,39 @@
+@mixin headerBtn() {
+  color: var(--colors-text);
+  font-weight: 600;
+  font-size: 19px;
+  padding: 10px 0;
+  border-bottom: 3px solid #11111100;
+  text-decoration: none;
+  transition: border-bottom 0.3s ease;
+}
+
+.header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    margin: 10px 0;
+  }
+
+  .header-btns {
+    display: flex;
+    gap: 20px;
+
+    &--btn {
+      @include headerBtn();
+
+      &:hover,
+      &-active {
+        @include headerBtn();
+        border-bottom: 3px solid var(--colors-orange);
+      }
+    }
+  }
+
+  .theme-switcher-con {
+    cursor: pointer;
+  }
+}
