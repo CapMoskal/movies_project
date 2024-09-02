@@ -23,3 +23,7 @@ export const store = configureStore({
 
 export type TRootState = ReturnType<typeof store.getState>
 export type AppDispatch = ReturnType<typeof store.dispatch>
+
+// сделать запрос на фильмы
+// настроить конфиг
+// рендер фильмов на главную страницу
