@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-import * as api from './config'
+import * as api from './config/config'
 import { themeReducers } from './features/themeSwitcher/theme-slice'
 
 export const store = configureStore({

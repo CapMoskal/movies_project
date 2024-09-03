@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
-import { MainPage } from '../../pages/MainPage/MainPage'
-import { NotFound } from '../../pages/NotFound'
+import { MainPage } from './MainPage/MainPage'
+import { NotFound } from './NotFound'
 
 export const Main = () => (
   <main>
