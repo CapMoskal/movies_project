@@ -1,4 +1,4 @@
-import { CarouselRender } from '../../components/MainPage/CarouselRender'
+import { CarouselRender } from '../../components/MainPage/Carousel/CarouselRender'
 import styles from '../../components/MainPage/MainPage.module.scss'
 
 export const MainPage = () => {
