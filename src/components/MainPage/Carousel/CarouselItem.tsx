@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import { TApiResponse } from '../../../config/types/apiResponseType'
 import styles from '../MainPage.module.scss'
 
@@ -6,24 +7,24 @@ interface Props {
 }
 
 export const CarouselItem = ({ movie }: Props) => {
-  const contentStyle: React.CSSProperties = {
-    width: '100%',
-    height: '360px',
-    color: '#fff',
-    lineHeight: '160px',
-    textAlign: 'center',
-    backgroundSize: 'cover',
-  }
+  const backImg = movie.backdrop?.url || movie.poster?.url
 
   return (
     <div className={styles['carousel-item']}>
       <div
+        className={styles['carousel-item--img']}
         style={{
-          ...contentStyle,
-          backgroundImage: `url(${movie.backdrop?.url})`,
+          backgroundImage: `url(${backImg})`,
         }}
       >
-        <h1>{movie.name}</h1>
+        <NavLink
+          to={`/:${movie.id}`}
+          className={styles['carousel-item--nav']}
+        >
+          <div className={styles['carousel-item--nav-title']}>
+            <h1>{movie.name}</h1>
+          </div>
+        </NavLink>
       </div>
     </div>
   )

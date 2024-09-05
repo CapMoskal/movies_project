@@ -14,14 +14,14 @@ export const loadMoviesCarousel = createAsyncThunk<TApiResponse[]>(
 )
 
 interface TInitialState {
-  status: 'idle' | 'loading' | 'rejected' | 'received'
+  statusCarousel: 'idle' | 'loading' | 'rejected' | 'received'
   listCarousel: TApiResponse[]
-  error: string | null
+  errorCarousel: string | null
 }
 const initialState: TInitialState = {
-  status: 'idle',
+  statusCarousel: 'idle',
   listCarousel: [],
-  error: null,
+  errorCarousel: null,
 }
 
 const moviesCarouselSlice = createSlice({
@@ -33,15 +33,15 @@ const moviesCarouselSlice = createSlice({
       .addCase(
         loadMoviesCarousel.fulfilled,
         (state, action: PayloadAction<TApiResponse[]>) => {
-          state.status = 'received'
+          state.statusCarousel = 'received'
           state.listCarousel = action.payload
         }
       )
       .addMatcher(
         (action) => action.type.endsWith('/pending'),
         (state) => {
-          state.status = 'loading'
-          state.error = null
+          state.statusCarousel = 'loading'
+          state.errorCarousel = null
         }
       )
       .addMatcher(
@@ -50,8 +50,9 @@ const moviesCarouselSlice = createSlice({
           state,
           action: PayloadAction<TApiResponse[] | undefined>
         ) => {
-          state.status = 'rejected'
-          state.error = action.payload || action.error.message
+          state.statusCarousel = 'rejected'
+          state.errorCarousel =
+            action.payload || action.errorCarousel.message
         }
       )
   },
