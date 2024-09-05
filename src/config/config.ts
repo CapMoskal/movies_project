@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { API_KEY, BASE_URL, SEARCH_MOVIES } from './URLs'
+import { TApiResponse } from './types/apiResponseType'
 
 interface TOptions {
   method: string
@@ -14,6 +15,13 @@ interface TOptions {
   }
 }
 
+interface TData {
+  docs: TApiResponse[]
+  page: number
+  pages: number
+  total: number
+}
+
 const baseOptions = {
   method: 'GET',
   headers: {
@@ -24,12 +32,12 @@ const baseOptions = {
   //   params: { page: '1', limit: '10', query: name },
 }
 
-const getRequest = async (options: TOptions) /*: Promise<>*/ => {
+const getRequest = async (options: TOptions) => {
   try {
     // попробовать также гет с ссылкой и настройками
     const res = await axios.request(options)
-    const data = await res.data
-    return data
+    const data: TData = await res.data
+    return data.docs
   } catch (err) {
     console.log(err.message)
     return err.message
@@ -45,23 +53,16 @@ export const getMovieByName = async (name: string) => {
   return getRequest(options)
 }
 
-export const getMovieLastMonth = async () => {
-  const date = new Date()
-  const day = date.getDay()
-  const month = date.getMonth()
-  const year = date.getFullYear()
-
-  const searchDate = `${day}.${
-    month - 1
-  }.${year}-${day}.${month}.${year}`
-
+export const getMovieLastMonth = async (/*date: string*/) => {
   const options = {
     ...baseOptions,
     url: BASE_URL + '/movie',
     params: {
       page: '1',
       limit: '5',
-      'premiere.russia': searchDate,
+      isSeries: 'false',
+      'rating.kp': '9-10',
+      // 'premiere.world': date,
     },
   }
   return getRequest(options)

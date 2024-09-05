@@ -7,7 +7,7 @@ const themeSlice = createSlice({
   name: '@@theme',
   initialState: initialState as TTheme,
   reducers: {
-    setTheme: (state, action) => (state = action.payload),
+    setTheme: (_, action) => action.payload,
   },
 })
 
