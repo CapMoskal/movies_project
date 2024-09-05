@@ -1,10 +1,10 @@
 import { Carousel } from 'antd'
 import styles from '../MainPage.module.scss'
 import { CarouselItem } from './CarouselItem'
-import { TApiResponse } from '../../../config/types/apiResponseType'
+import { TMovie } from '../../../config/types/apiResponseType'
 
 interface Props {
-  listCarousel: TApiResponse[]
+  listCarousel: TMovie[]
 }
 
 export const CarouselRender = ({ listCarousel }: Props) => (

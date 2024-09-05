@@ -1,6 +1,5 @@
-import axios from 'axios'
 import { API_KEY, BASE_URL, SEARCH_MOVIES } from './URLs'
-import { TApiResponse } from './types/apiResponseType'
+import { TGenresNames } from './types/apiResponseType'
 
 interface TOptions {
   method: string
@@ -12,14 +11,11 @@ interface TOptions {
   params: {
     page: string
     limit: string
+    isSeries?: boolean
+    'rating.kp'?: string
+    query?: string
+    'genres.name'?: string
   }
-}
-
-interface TData {
-  docs: TApiResponse[]
-  page: number
-  pages: number
-  total: number
 }
 
 const baseOptions = {
@@ -28,50 +24,48 @@ const baseOptions = {
     accept: 'application/json',
     'X-API-KEY': API_KEY,
   },
-  //   url: BASE_URL + SEARCH_MOVIES,
-  //   params: { page: '1', limit: '10', query: name },
-}
-
-const getRequest = async (options: TOptions) => {
-  try {
-    // попробовать также гет с ссылкой и настройками
-    const res = await axios.request(options)
-    const data: TData = await res.data
-    return data.docs
-  } catch (err) {
-    console.log(err.message)
-    return err.message
-  }
 }
 
 export const getMovieByName = async (name: string) => {
-  const options = {
+  const options: TOptions = {
     ...baseOptions,
     url: BASE_URL + SEARCH_MOVIES,
     params: { page: '1', limit: '10', query: name },
   }
-  return getRequest(options)
+  return options
 }
 
-export const getMovieLastMonth = async (/*date: string*/) => {
-  const options = {
+export const popularMovies = () => {
+  const options: TOptions = {
     ...baseOptions,
     url: BASE_URL + '/movie',
     params: {
       page: '1',
       limit: '5',
-      isSeries: 'false',
+      isSeries: false,
       'rating.kp': '9-10',
-      // 'premiere.world': date,
     },
   }
-  return getRequest(options)
+  return options
 }
 
-// export const getMovieByGenres = async (genres: ???) => {
-//   const options = {
-//     ...baseOptions,
-//     url: BASE_URL + SEARCH_MOVIES,
-//     params: { page: '1', limit: '10', ???? genres: genres ?????? },
-//   }
-// }
+export const topGenresMovies = () => {
+  // const topGenres: TGenresNames[] = [
+  //   'комедия',
+  //   'ужасы',
+  //   'фэнтези',
+  //   'драма',
+  // ]
+
+  const options: TOptions = {
+    ...baseOptions,
+    url: BASE_URL + '/movie',
+    params: {
+      page: '1',
+      limit: '15',
+      isSeries: false,
+      'genres.name': 'комедия',
+    },
+  }
+  return options
+}

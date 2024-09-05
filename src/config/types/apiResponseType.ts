@@ -12,7 +12,7 @@ export type TStatus =
   | 'post-production'
   | 'pre-production'
 
-type TGenresNames =
+export type TGenresNames =
   | 'аниме'
   | 'биография'
   | 'боевик'
@@ -71,7 +71,7 @@ export interface TPoster {
   previewUrl: string
 }
 
-export interface TApiResponse {
+export interface TMovie {
   id: number
   name: string | null
   alternativeName: string | null

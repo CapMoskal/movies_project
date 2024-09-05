@@ -4,6 +4,7 @@ import { TRootState } from '../../store'
 import { loadMoviesCarousel } from '../../features/moviesCarousel/movies-slice-carousel'
 
 import { RenderMain } from '../../components/based/RenderMain'
+import { loadMoviesLines } from '../../features/movies-sliceLines/movies-slice-lines'
 
 export const MainPage = () => {
   // сделать хук
@@ -14,6 +15,7 @@ export const MainPage = () => {
 
   useEffect(() => {
     dispatch(loadMoviesCarousel())
+    dispatch(loadMoviesLines())
   }, [dispatch])
   //
 
