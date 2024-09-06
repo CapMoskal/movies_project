@@ -14,7 +14,7 @@ interface TOptions {
     isSeries?: boolean
     'rating.kp'?: string
     query?: string
-    'genres.name'?: string
+    'genres.name'?: string[]
   }
 }
 
@@ -49,15 +49,8 @@ export const popularMovies = () => {
   return options
 }
 
+export const topGenres = ['комедия', 'ужасы', 'драма']
 export const topGenresMovies = () => {
-  const topGenres: TGenresNames[] = [
-    'комедия',
-    'ужасы',
-    'фэнтези',
-    'драма',
-  ]
-  const genresString = topGenres.join('&genres.name=')
-
   const options: TOptions = {
     ...baseOptions,
     url: BASE_URL + '/movie',
@@ -66,7 +59,6 @@ export const topGenresMovies = () => {
       limit: '15',
       isSeries: false,
       'genres.name': topGenres,
-      // понять как сделать запрос по массиву жанров
     },
   }
   return options

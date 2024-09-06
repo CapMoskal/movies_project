@@ -3,8 +3,8 @@ import { useEffect } from 'react'
 import { TRootState } from '../../store'
 import { loadMoviesCarousel } from '../../features/moviesCarousel/movies-slice-carousel'
 
-import { RenderMain } from '../../components/based/RenderMain'
 import { loadMoviesLines } from '../../features/movies-sliceLines/movies-slice-lines'
+import { RenderMain } from '../../components/MainPage/RenderMain'
 
 export const MainPage = () => {
   // сделать хук

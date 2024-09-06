@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { TMovie } from '../../config/types/apiResponseType'
+import { topGenres } from '../../config/config'
 
 interface TDocs {
   docs: TMovie[]
@@ -19,7 +20,10 @@ const getObjectOfGenres = (data: TMovie[]) => {
 
   data.forEach((movie) => {
     movie.genres.forEach((genre) => {
-      if (!objectWGenres[genre.name]) {
+      // разобраться почему не добавляет в объект сущности
+      const isAdd =
+        !objectWGenres[genre.name] && topGenres.includes(genre.name)
+      if (isAdd) {
         objectWGenres[genre.name] = []
       }
       objectWGenres[genre.name].push(movie)
@@ -47,9 +51,8 @@ const moviesLinesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loadMoviesLines.fulfilled, (state, action) => {
-        // сделать функции для обработки поступающего массива
-        // его нужно переделать в объект
-        state.listLines = getObjectOfGenres(action.payload.data.docs)
+        console.log(action.payload)
+        // state.listLines = getObjectOfGenres(action.payload)
         state.statusLines = 'received'
       })
       .addCase(loadMoviesLines.rejected, (state, action) => {
