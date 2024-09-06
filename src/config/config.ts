@@ -50,12 +50,13 @@ export const popularMovies = () => {
 }
 
 export const topGenresMovies = () => {
-  // const topGenres: TGenresNames[] = [
-  //   'комедия',
-  //   'ужасы',
-  //   'фэнтези',
-  //   'драма',
-  // ]
+  const topGenres: TGenresNames[] = [
+    'комедия',
+    'ужасы',
+    'фэнтези',
+    'драма',
+  ]
+  const genresString = topGenres.join('&genres.name=')
 
   const options: TOptions = {
     ...baseOptions,
@@ -64,7 +65,8 @@ export const topGenresMovies = () => {
       page: '1',
       limit: '15',
       isSeries: false,
-      'genres.name': 'комедия',
+      'genres.name': topGenres,
+      // понять как сделать запрос по массиву жанров
     },
   }
   return options

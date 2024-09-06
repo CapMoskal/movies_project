@@ -15,9 +15,17 @@ interface TInitialState {
 }
 
 const getObjectOfGenres = (data: TMovie[]) => {
-  const obj: { [genre: string]: TMovie[] } = data.map((movie) => {
-    movie.genres.map((genre) => {})
+  const objectWGenres: { [genre: string]: TMovie[] } = {}
+
+  data.forEach((movie) => {
+    movie.genres.forEach((genre) => {
+      if (!objectWGenres[genre.name]) {
+        objectWGenres[genre.name] = []
+      }
+      objectWGenres[genre.name].push(movie)
+    })
   })
+  return objectWGenres
 }
 
 export const loadMoviesLines = createAsyncThunk<TData>(
@@ -40,8 +48,8 @@ const moviesLinesSlice = createSlice({
     builder
       .addCase(loadMoviesLines.fulfilled, (state, action) => {
         // сделать функции для обработки поступающего массива
-        // его нужно переделать в массива объектов
-        state.listLines = action.payload.data.docs
+        // его нужно переделать в объект
+        state.listLines = getObjectOfGenres(action.payload.data.docs)
         state.statusLines = 'received'
       })
       .addCase(loadMoviesLines.rejected, (state, action) => {
