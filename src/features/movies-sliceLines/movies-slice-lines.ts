@@ -51,7 +51,7 @@ const moviesLinesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loadMoviesLines.fulfilled, (state, action) => {
-        console.log(action.payload)
+        // console.log(action.payload)
         // state.listLines = getObjectOfGenres(action.payload)
         state.statusLines = 'received'
       })
