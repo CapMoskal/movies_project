@@ -9,7 +9,7 @@ export const RenderApp = () => {
   return (
     <>
       {width > 768 ? <Header /> : <MobileHeader />}
-      {/* <Main /> */}
+      <Main />
       {/* footer */}
     </>
   )

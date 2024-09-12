@@ -9,5 +9,6 @@ interface Props {
 export const RenderMain = ({ listCarousel }: Props) => (
   <div className={styles['main-page-con']}>
     <CarouselRender listCarousel={listCarousel} />
+    {/* здесь будут линии с фильмами (мап по жанрам?) */}
   </div>
 )

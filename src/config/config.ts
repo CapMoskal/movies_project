@@ -56,7 +56,7 @@ export const topGenresMovies = () => {
     url: BASE_URL + '/movie',
     params: {
       page: '1',
-      limit: '15',
+      limit: '100',
       isSeries: false,
       'genres.name': topGenres,
     },

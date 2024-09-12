@@ -15,27 +15,29 @@ interface TInitialState {
   errorLines: string | undefined
 }
 
-const getObjectOfGenres = (data: TMovie[]) => {
-  const objectWGenres: { [genre: string]: TMovie[] } = {}
+const getObjectOfGenres = (movies: TMovie[]) => {
+  const objectWithGenres: { [genre: string]: TMovie[] } = {}
 
-  data.forEach((movie) => {
-    movie.genres.forEach((genre) => {
-      // разобраться почему не добавляет в объект сущности
-      const isAdd =
-        !objectWGenres[genre.name] && topGenres.includes(genre.name)
-      if (isAdd) {
-        objectWGenres[genre.name] = []
-      }
-      objectWGenres[genre.name].push(movie)
+  movies.forEach((movie) => {
+    movie.genres?.forEach((genre) => {
+      const isInTopGenres =
+        !objectWithGenres[genre.name] &&
+        topGenres.includes(genre.name)
+
+      if (isInTopGenres) objectWithGenres[genre.name] = []
+      objectWithGenres[genre.name]?.push(movie)
     })
   })
-  return objectWGenres
+  return objectWithGenres
 }
 
-export const loadMoviesLines = createAsyncThunk<TData>(
+export const loadMoviesLines = createAsyncThunk<TMovie[]>(
   '@@moviesLines/load-movies-lines',
-  (_, { extra: { client, api } }) =>
-    client.request(api.topGenresMovies())
+  async (_, { extra: { client, api } }) => {
+    const res = await client.request(api.topGenresMovies())
+    const data = await res.data.docs
+    return data
+  }
 )
 
 const initialState: TInitialState = {
@@ -51,8 +53,7 @@ const moviesLinesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loadMoviesLines.fulfilled, (state, action) => {
-        // console.log(action.payload)
-        // state.listLines = getObjectOfGenres(action.payload)
+        state.listLines = getObjectOfGenres(action.payload)
         state.statusLines = 'received'
       })
       .addCase(loadMoviesLines.rejected, (state, action) => {

@@ -13,10 +13,13 @@ interface TData {
   data: TDocs
 }
 
-export const loadMoviesCarousel = createAsyncThunk<TData>(
+export const loadMoviesCarousel = createAsyncThunk<TMovie[]>(
   '@@moviesCarousel/load-movies-carousel',
-  (_, { extra: { client, api } }) =>
-    client.request(api.popularMovies())
+  async (_, { extra: { client, api } }) => {
+    const res = await client.request(api.popularMovies())
+    const data = await res.data.docs
+    return data
+  }
 )
 
 const initialState: TInitialState = {
@@ -34,7 +37,7 @@ const moviesCarouselSlice = createSlice({
       .addCase(loadMoviesCarousel.fulfilled, (state, action) => {
         // PayloadAction<TData> ?????
         state.statusCarousel = 'received'
-        state.listCarousel = action.payload.data.docs
+        state.listCarousel = action.payload
       })
       .addCase(loadMoviesCarousel.rejected, (state, action) => {
         state.statusCarousel = action.meta.requestStatus
