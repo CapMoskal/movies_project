@@ -1,26 +1,27 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
-import { TRootState } from '../../store'
-import { loadMoviesCarousel } from '../../features/moviesCarousel/movies-slice-carousel'
-
-import { loadMoviesLines } from '../../features/movies-sliceLines/movies-slice-lines'
-import { RenderMain } from '../../components/MainPage/RenderMain'
+import { CarouselRender } from '../../components/Carousel/CarouselRender'
+import { LinesRender } from '../../components/Lines/LinesRender'
+import styles from '../../components/MainPage/MainPage.module.scss'
+import { useMoviesCarousel } from '../../components/Carousel/useMoviesCarousel'
+import { useMoviesLines } from '../../components/Lines/useMoviesLines'
 
 export const MainPage = () => {
-  // сделать хук
-  const dispatch = useDispatch()
-  const { errorCarousel, listCarousel, statusCarousel } = useSelector(
-    (state: TRootState) => state.moviesCarousel
-  )
-
-  useEffect(() => {
-    dispatch(loadMoviesCarousel())
-    dispatch(loadMoviesLines())
-  }, [dispatch])
-  //
+  const { errorCarousel, statusCarousel, listCarousel } =
+    useMoviesCarousel()
+  const { errorLines, statusLines, listLines } = useMoviesLines()
 
   if (statusCarousel === 'loading') return <h1>Loading...</h1>
-  if (statusCarousel === 'received')
-    return <RenderMain listCarousel={listCarousel} />
-  return errorCarousel ? <h1>Error loading movies</h1> : null
+  return (
+    <div className={styles['main-page-con']}>
+      <CarouselRender
+        list={listCarousel}
+        status={statusCarousel}
+        error={errorCarousel}
+      />
+      <LinesRender
+        list={listLines}
+        error={errorLines}
+        status={statusLines}
+      />
+    </div>
+  )
 }

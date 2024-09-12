@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
-import { TMovie } from '../../../config/types/apiResponseType'
-import styles from '../MainPage.module.scss'
+import { TMovie } from '../../config/types/apiResponseType'
+import styles from './Carousel.module.scss'
 
 interface Props {
   movie: TMovie

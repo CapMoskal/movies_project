@@ -35,7 +35,6 @@ const moviesCarouselSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loadMoviesCarousel.fulfilled, (state, action) => {
-        // PayloadAction<TData> ?????
         state.statusCarousel = 'received'
         state.listCarousel = action.payload
       })

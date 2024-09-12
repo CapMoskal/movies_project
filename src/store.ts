@@ -4,7 +4,7 @@ import axios from 'axios'
 import * as api from './config/config'
 import { themeReducers } from './features/themeSwitcher/theme-slice'
 import { moviesCarouselReducer } from './features/moviesCarousel/movies-slice-carousel'
-import { moviesLinesReducer } from './features/movies-sliceLines/movies-slice-lines'
+import { moviesLinesReducer } from './features/moviesLines/movies-slice-lines'
 
 export const store = configureStore({
   reducer: {
