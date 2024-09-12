@@ -11,7 +11,7 @@ interface TData {
 
 interface TInitialState {
   statusLines: 'idle' | 'loading' | 'rejected' | 'received'
-  listLines: { [genre: string]: TMovie[] }
+  genresObject: { [genre: string]: TMovie[] }
   errorLines: string | undefined
 }
 
@@ -43,7 +43,7 @@ export const loadMoviesLines = createAsyncThunk<TMovie[]>(
 const initialState: TInitialState = {
   statusLines: 'idle',
   errorLines: undefined,
-  listLines: {},
+  genresObject: {},
 }
 
 const moviesLinesSlice = createSlice({
@@ -53,7 +53,7 @@ const moviesLinesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loadMoviesLines.fulfilled, (state, action) => {
-        state.listLines = getObjectOfGenres(action.payload)
+        state.genresObject = getObjectOfGenres(action.payload)
         state.statusLines = 'received'
       })
       .addCase(loadMoviesLines.rejected, (state, action) => {

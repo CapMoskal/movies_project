@@ -7,7 +7,7 @@ import { useMoviesLines } from '../../components/Lines/useMoviesLines'
 export const MainPage = () => {
   const { errorCarousel, statusCarousel, listCarousel } =
     useMoviesCarousel()
-  const { errorLines, statusLines, listLines } = useMoviesLines()
+  const { errorLines, statusLines, genresObject } = useMoviesLines()
 
   if (statusCarousel === 'loading') return <h1>Loading...</h1>
   return (
@@ -18,7 +18,7 @@ export const MainPage = () => {
         error={errorCarousel}
       />
       <LinesRender
-        list={listLines}
+        genresObject={genresObject}
         error={errorLines}
         status={statusLines}
       />

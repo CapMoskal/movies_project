@@ -1,0 +1,44 @@
+.lines-con {
+  margin-top: 20px;
+  padding: 10px 25px;
+
+  .container {
+    border: 1px solid white;
+
+    .line {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      &--scroll-btn {
+        font-size: 45px;
+      }
+
+      .movie-list {
+        display: flex;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        padding: 10px;
+        width: 100%;
+
+        /* Скрытие скроллбара */
+        // -ms-overflow-style: none;
+        // scrollbar-width: none;
+
+        &--card {
+          &--title {
+            color: var(--colors-text);
+            font-weight: var(--font-w-mid);
+            text-decoration: none;
+          }
+
+          &--img {
+            width: 150px;
+            height: 200px;
+          }
+        }
+      }
+    }
+  }
+}

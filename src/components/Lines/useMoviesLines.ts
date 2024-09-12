@@ -5,7 +5,7 @@ import { loadMoviesLines } from '../../features/moviesLines/movies-slice-lines'
 
 export const useMoviesLines = () => {
   const dispatch = useDispatch()
-  const { listLines, errorLines, statusLines } = useSelector(
+  const { genresObject, errorLines, statusLines } = useSelector(
     (state: TRootState) => state.moviesLines
   )
 
@@ -13,5 +13,5 @@ export const useMoviesLines = () => {
     dispatch(loadMoviesLines())
   }, [dispatch])
 
-  return { listLines, errorLines, statusLines }
+  return { genresObject, errorLines, statusLines }
 }
