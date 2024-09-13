@@ -14,15 +14,15 @@ export const Line = ({ title, movies }: Props) => {
 
   const scrollLeft = () => {
     if (listRef.current) {
-      listRef.current.scrollBy({ left: -200, behavior: 'smooth' })
+      listRef.current.scrollBy({ left: -400, behavior: 'smooth' })
+    }
+  }
+  const scrollRight = () => {
+    if (listRef.current) {
+      listRef.current.scrollBy({ left: 400, behavior: 'smooth' })
     }
   }
 
-  const scrollRight = () => {
-    if (listRef.current) {
-      listRef.current.scrollBy({ left: 200, behavior: 'smooth' })
-    }
-  }
   return (
     <div className={styles['container']}>
       <h1>{title}</h1>

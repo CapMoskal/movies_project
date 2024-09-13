@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import { TMovie } from '../../config/types/apiResponseType'
 import styles from './Lines.module.scss'
+import { MovieRating } from '../movieRating/movieRating'
 
 interface Props {
   movie: TMovie
@@ -8,15 +9,15 @@ interface Props {
 
 export const LineItem = ({ movie }: Props) => {
   return movie.poster || movie.backdrop ? (
-    <div className={styles['movie-list--card']}>
+    <NavLink to="" className={styles['movie-list--card']}>
       <img
         src={movie.poster.previewUrl || movie.backdrop.previewUrl}
         alt="movie poster"
         className={styles['movie-list--card--img']}
       />
-      <NavLink className={styles['movie-list--card--title']} to={''}>
-        {movie.name || movie.alternativeName}
-      </NavLink>
-    </div>
+      {movie.rating.imdb ? (
+        <MovieRating rating={movie.rating.imdb} />
+      ) : null}
+    </NavLink>
   ) : null
 }

@@ -1,5 +1,4 @@
 import { API_KEY, BASE_URL, SEARCH_MOVIES } from './URLs'
-import { TGenresNames } from './types/apiResponseType'
 
 interface TOptions {
   method: string
@@ -59,6 +58,7 @@ export const topGenresMovies = () => {
       limit: '100',
       isSeries: false,
       'genres.name': topGenres,
+      'rating.kp': '3-10',
     },
   }
   return options
