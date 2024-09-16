@@ -1,4 +1,4 @@
-import { API_KEY, BASE_URL, SEARCH_MOVIES } from './URLs'
+import { API_KEY, BASE_URL, SEARCH_BY_ID } from './URLs'
 
 interface TOptions {
   method: string
@@ -7,7 +7,7 @@ interface TOptions {
     'X-API-KEY': string
   }
   url: string
-  params: {
+  params?: {
     page: string
     limit: string
     isSeries?: boolean
@@ -23,15 +23,6 @@ const baseOptions = {
     accept: 'application/json',
     'X-API-KEY': API_KEY,
   },
-}
-
-export const getMovieByName = async (name: string) => {
-  const options: TOptions = {
-    ...baseOptions,
-    url: BASE_URL + SEARCH_MOVIES,
-    params: { page: '1', limit: '10', query: name },
-  }
-  return options
 }
 
 export const popularMovies = () => {
@@ -53,18 +44,27 @@ export const topGenres = [
   'ужасы',
   'драма',
   'короткометражка',
+  'мелодрама',
 ]
-export const topGenresMovies = () => {
+export const getGenresMovies = () => {
   const options: TOptions = {
     ...baseOptions,
     url: BASE_URL + '/movie',
     params: {
       page: '1',
-      limit: '100',
+      limit: '150',
       isSeries: false,
       'genres.name': topGenres,
       'rating.kp': '3-10',
     },
+  }
+  return options
+}
+
+export const getMovieById = (id: number) => {
+  const options: TOptions = {
+    ...baseOptions,
+    url: BASE_URL + SEARCH_BY_ID(id),
   }
   return options
 }

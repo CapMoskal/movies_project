@@ -1,0 +1,18 @@
+.detail-con {
+  display: flex;
+  justify-content: space-around;
+
+  .img-con {
+    &--img {
+      width: 300px;
+    }
+  }
+  .info-con {
+    &--title {
+      font-size: 27px;
+      width: 450px;
+    }
+  }
+  .extra-info-con {
+  }
+}

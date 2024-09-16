@@ -34,7 +34,7 @@ const getObjectOfGenres = (movies: TMovie[]) => {
 export const loadMoviesLines = createAsyncThunk<TMovie[]>(
   '@@moviesLines/load-movies-lines',
   async (_, { extra: { client, api } }) => {
-    const res = await client.request(api.topGenresMovies())
+    const res = await client.request(api.getGenresMovies())
     const data = await res.data.docs
     return data
   }

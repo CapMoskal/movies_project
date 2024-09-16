@@ -5,4 +5,6 @@ export const API_KEY = '35MA1RE-FR348QQ-KG5JYTZ-AF4VS8P'
 
 export const SEARCH_MOVIES = '/movie/search'
 
+export const SEARCH_BY_ID = (id: number) => `/movie/${id}`
+
 export const RANDOM_MOVIES = '/movie/random'

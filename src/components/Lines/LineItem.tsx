@@ -9,7 +9,10 @@ interface Props {
 
 export const LineItem = ({ movie }: Props) => {
   return movie.poster || movie.backdrop ? (
-    <NavLink to="" className={styles['movie-list--card']}>
+    <NavLink
+      to={`/${movie.id}`}
+      className={styles['movie-list--card']}
+    >
       <img
         src={movie.poster.previewUrl || movie.backdrop.previewUrl}
         alt="movie poster"

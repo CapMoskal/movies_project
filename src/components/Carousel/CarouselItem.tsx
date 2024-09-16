@@ -18,7 +18,7 @@ export const CarouselItem = ({ movie }: Props) => {
         }}
       >
         <NavLink
-          to={`/:${movie.id}`}
+          to={`/${movie.id}`}
           className={styles['carousel-item--nav']}
         >
           <div className={styles['carousel-item--nav-title']}>
