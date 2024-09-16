@@ -48,7 +48,12 @@ export const popularMovies = () => {
   return options
 }
 
-export const topGenres = ['комедия', 'ужасы', 'драма']
+export const topGenres = [
+  'комедия',
+  'ужасы',
+  'драма',
+  'короткометражка',
+]
 export const topGenresMovies = () => {
   const options: TOptions = {
     ...baseOptions,

@@ -1,32 +1,22 @@
-import React from 'react'
 import styles from './movieRating.module.scss'
 
 interface Props {
   rating: number
 }
 
-const greenCol: React.CSSProperties = {
-  backgroundColor: 'green',
-}
-const grayCol: React.CSSProperties = {
-  backgroundColor: 'gray',
-}
-const redCol: React.CSSProperties = {
-  backgroundColor: 'red',
-}
-
 export const MovieRating = ({ rating }: Props) => {
   const setColor = (rating: number) => {
     if (rating > 7) {
-      return greenCol
+      return { backgroundColor: 'green' }
     } else if (rating > 5) {
-      return grayCol
+      return { backgroundColor: 'gray' }
     } else {
-      return redCol
+      return { backgroundColor: 'red' }
     }
   }
+
   return (
-    <p style={() => setColor(rating)} className={styles['rating']}>
+    <p style={setColor(rating)} className={styles['rating']}>
       {rating}
     </p>
   )
