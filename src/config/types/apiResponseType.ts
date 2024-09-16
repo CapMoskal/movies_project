@@ -12,7 +12,7 @@ export type TStatus =
   | 'post-production'
   | 'pre-production'
 
-type TGenresNames =
+export type TGenresNames =
   | 'аниме'
   | 'биография'
   | 'боевик'
@@ -63,7 +63,8 @@ export interface TVotes {
 }
 
 export interface TGenres {
-  name: TGenresNames
+  name: string
+  // name: TGenresNames
 }
 
 export interface TPoster {
@@ -71,7 +72,7 @@ export interface TPoster {
   previewUrl: string
 }
 
-export interface TApiResponse {
+export interface TMovie {
   id: number
   name: string | null
   alternativeName: string | null

@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom'
-import { TApiResponse } from '../../../config/types/apiResponseType'
-import styles from '../MainPage.module.scss'
+import { TMovie } from '../../config/types/apiResponseType'
+import styles from './Carousel.module.scss'
 
 interface Props {
-  movie: TApiResponse
+  movie: TMovie
 }
 
 export const CarouselItem = ({ movie }: Props) => {
