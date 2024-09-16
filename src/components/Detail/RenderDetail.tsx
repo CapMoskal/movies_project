@@ -1,5 +1,8 @@
 import { TMovie } from '../../config/types/apiResponseType'
+import { CenterCon } from './CenterCon'
 import styles from './detailPage.module.scss'
+import { LeftCon } from './LeftCon'
+import { RightCon } from './RightCon/RightCon'
 
 interface Props {
   movie: TMovie
@@ -8,19 +11,9 @@ interface Props {
 export const RenderDetail = ({ movie }: Props) => {
   return (
     <div className={styles['detail-con']}>
-      <div className={styles['img-con']}>
-        <img
-          className={styles['img-con--img']}
-          src={movie.poster.url}
-          alt="main poster"
-        />
-      </div>
-      <div className={styles['info-con']}>
-        <h1 className={styles['info-con--title']}>
-          {movie.name || movie.alternativeName || movie.enName}
-        </h1>
-      </div>
-      <div className={styles['extra-info-con']}></div>
+      <LeftCon movie={movie} />
+      <CenterCon movie={movie} />
+      <RightCon movie={movie} />
     </div>
   )
 }

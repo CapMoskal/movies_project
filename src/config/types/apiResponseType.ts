@@ -72,11 +72,18 @@ export interface TPoster {
   previewUrl: string
 }
 
+export interface TPerson {
+  id: number
+  photo: string
+  name: string
+}
+
 export interface TMovie {
   id: number
   name: string | null
   alternativeName: string | null
   poster: TPoster
+  persons: TPerson[]
   backdrop: TPoster
   enName: string | null
   type: TTypeOfCinema | null
