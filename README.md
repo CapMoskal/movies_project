@@ -1,15 +1,17 @@
 MOVIES PROJECT
 
 [] api config
---[] get movies by genre
+--[x] get movies by genre
 --[] get movies by name
---[] get movies by smthg
+--[x] get tops?
 
 [] react-router-dom
---[] расположение всего
---[]
+--[x] расположение всего
+--[] detail page
 
 [] main page
+--[x] carousel
+--[] lines
 
 <!-- done -->
 

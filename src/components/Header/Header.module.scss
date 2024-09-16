@@ -1,7 +1,6 @@
 @mixin headerBtn() {
-  color: var(--colors-text);
-  font-weight: 600;
-  font-size: 19px;
+  color: var(--colors-text-s);
+  font-weight: var(--font-w-bold);
   padding: 10px 0;
   border-bottom: 3px solid #11111100;
   text-decoration: none;
@@ -13,12 +12,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 19px;
 
   h3 {
     margin: 10px 0;
+    font-weight: var(--font-w-bold);
   }
 
-  .header-btns {
+  &-btns {
     display: flex;
     gap: 20px;
 
@@ -29,6 +30,7 @@
       &-active {
         @include headerBtn();
         border-bottom: 3px solid var(--colors-orange);
+        color: var(--colors-text);
       }
     }
   }

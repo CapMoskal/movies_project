@@ -1,14 +1,7 @@
-import { Header } from './components/Header/Header'
-import { Main } from './components/Main/Main'
+import { RenderApp } from './components/RenderApp/RenderApp'
 
 function App() {
-  return (
-    <>
-      <Header />
-      <Main />
-      {/* footer */}
-    </>
-  )
+  return <RenderApp />
 }
 
 export default App
