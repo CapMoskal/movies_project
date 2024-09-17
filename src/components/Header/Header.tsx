@@ -2,12 +2,20 @@ import { ThemeSwitcher } from './ThemeSwitcher'
 import { HeaderBtns } from './HeaderBtns'
 import styles from './Header.module.scss'
 import { useState } from 'react'
-import { Input } from 'antd'
 import { SearchBar } from './Searchbar/SearchBar'
+import { useDispatch, useSelector } from 'react-redux'
+import { TRootState } from '../../store'
 
 export const Header = () => {
+  const dispatch = useDispatch()
+  const { error, status, movies } = useSelector(
+    (state: TRootState) => state.searchbar
+  )
+
   const [isSearching, setIsSearching] = useState(false)
   const [query, setQuery] = useState('')
+
+  // не нужно, будем брать из rtk
   const [suggestions, setSuggestions] = useState<string[]>([])
 
   const handleSearch = () => {
@@ -20,6 +28,7 @@ export const Header = () => {
     setQuery(e.target.value)
     // Здесь должна быть логика для получения предложений на основе query
     // Например, можно использовать debounce и делать запрос к API
+
     if (e.target.value.length > 0) {
       setSuggestions(['Movie 1', 'Movie 2', 'Series 1']) // Заглушка
     } else {

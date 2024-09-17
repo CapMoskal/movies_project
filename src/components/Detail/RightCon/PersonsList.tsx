@@ -16,13 +16,13 @@ export const PersonsList = ({ persons }: Props) => {
     if (isExpanded) {
       return persons.map((person, index) => {
         if (index < maxLenght) {
-          return <li key={person.name}>{person.name}</li>
+          return <li key={index}>{person.name}</li>
         }
       })
     }
     return persons.map((person, index) => {
       if (index < minLenght) {
-        return <li key={person.name}>{person.name}</li>
+        return <li key={index}>{person.name}</li>
       }
     })
   }

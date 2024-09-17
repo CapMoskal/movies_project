@@ -34,7 +34,7 @@ const detailSlice = createSlice({
         state.movie = action.payload
         state.status = 'received'
       })
-      .addCase(loadDetail.pending, (state, action) => {
+      .addCase(loadDetail.pending, (state) => {
         state.status = 'loading'
         state.error = undefined
       })

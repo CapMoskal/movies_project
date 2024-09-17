@@ -6,6 +6,7 @@ import { themeReducers } from './features/themeSwitcher/theme-slice'
 import { moviesCarouselReducer } from './features/moviesCarousel/movies-slice-carousel'
 import { moviesLinesReducer } from './features/moviesLines/movies-slice-lines'
 import { detailReducer } from './features/detailMovie/detail-slice'
+import { searchbarReducer } from './features/searchbar/searchbar-slice'
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     moviesCarousel: moviesCarouselReducer,
     moviesLines: moviesLinesReducer,
     detail: detailReducer,
+    searchbar: searchbarReducer,
   },
   devTools: true,
   middleware: (getDefaultMiddleware) =>

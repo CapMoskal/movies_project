@@ -1,4 +1,9 @@
-import { API_KEY, BASE_URL, SEARCH_BY_ID } from './URLs'
+import {
+  API_KEY,
+  BASE_URL,
+  SEARCH_BY_ID,
+  SEARCH_MOVIES,
+} from './URLs'
 
 interface TOptions {
   method: string
@@ -65,6 +70,20 @@ export const getMovieById = (id: number) => {
   const options: TOptions = {
     ...baseOptions,
     url: BASE_URL + SEARCH_BY_ID(id),
+  }
+  return options
+}
+
+export const getMovieBySearch = (name: string) => {
+  const options: TOptions = {
+    ...baseOptions,
+    url: BASE_URL + SEARCH_MOVIES,
+    params: {
+      page: '1',
+      limit: '15',
+      'rating.kp': '3-10',
+      query: name,
+    },
   }
   return options
 }

@@ -21,7 +21,7 @@ export const SearchBar = ({
         autoFocus
         value={query}
         onChange={handleInputChange}
-        placeholder="Search for movies or series..."
+        placeholder="Введите название фильма или сериала..."
         onBlur={() => setIsSearching(false)}
       />
       {suggestions.length > 0 && (
