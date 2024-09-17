@@ -3,11 +3,18 @@ import { HeaderButton } from './HeaderButton'
 import styles from './Header.module.scss'
 import { SearchOutlined } from '@ant-design/icons'
 
-export const HeaderBtns = () => (
+interface Props {
+  searchSwitch: () => void
+}
+
+export const HeaderBtns = ({ searchSwitch }: Props) => (
   <div className={styles['header-btns']}>
     {headerBtnsItems.map((btn) => (
       <HeaderButton key={btn.title} btn={btn} />
     ))}
-    <SearchOutlined className={styles['header-btns--btn']} />
+    <SearchOutlined
+      onClick={searchSwitch}
+      className={styles['header-btns--btn']}
+    />
   </div>
 )
