@@ -64,7 +64,6 @@ export interface TVotes {
 
 export interface TGenres {
   name: string
-  // name: TGenresNames
 }
 
 export interface TPoster {

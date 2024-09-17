@@ -1,5 +1,5 @@
 import { TMovie } from '../../config/types/apiResponseType'
-import { CenterCon } from './CenterCon'
+import { CenterCon } from './CenterCon/CenterCon'
 import styles from './detailPage.module.scss'
 import { LeftCon } from './LeftCon'
 import { RightCon } from './RightCon/RightCon'

@@ -41,6 +41,18 @@
     &--title {
       font-size: 27px;
       width: 450px;
+      margin-bottom: 5px;
+    }
+
+    &--age-rating {
+      margin: 0;
+    }
+
+    &--about {
+      &-item {
+        display: flex;
+        justify-content: space-between;
+      }
     }
   }
 
@@ -50,6 +62,12 @@
     &--rating-con {
       position: relative;
       height: 40px;
+      left: -5px;
+    }
+
+    &--votes {
+      margin: 0;
+      font-size: 14px;
     }
 
     &--actors-con {

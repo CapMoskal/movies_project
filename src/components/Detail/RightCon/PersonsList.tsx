@@ -9,15 +9,20 @@ interface Props {
 export const PersonsList = ({ persons }: Props) => {
   const [isExpanded, setIsExpanded] = useState(false)
   const toggleExpand = () => setIsExpanded(!isExpanded)
-  const maxLenght = 8
+  const minLenght = 8
+  const maxLenght = 16
 
   const renderPersons = (persons: TPerson[]) => {
     if (isExpanded) {
-      return persons.map((person) => <li>{person.name}</li>)
+      return persons.map((person, index) => {
+        if (index < maxLenght) {
+          return <li key={person.name}>{person.name}</li>
+        }
+      })
     }
     return persons.map((person, index) => {
-      if (index < maxLenght) {
-        return <li>{person.name}</li>
+      if (index < minLenght) {
+        return <li key={person.name}>{person.name}</li>
       }
     })
   }
@@ -28,12 +33,14 @@ export const PersonsList = ({ persons }: Props) => {
       <ul className={styles['right-con--actors-con--persons-list']}>
         {renderPersons(persons)}
       </ul>
-      <button
-        onClick={toggleExpand}
-        className={styles['right-con--actors-con--btn']}
-      >
-        {isExpanded ? 'Свернуть' : 'Развернуть'}
-      </button>
+      {persons.length > minLenght ? (
+        <button
+          onClick={toggleExpand}
+          className={styles['right-con--actors-con--btn']}
+        >
+          {isExpanded ? 'Свернуть' : 'Развернуть'}
+        </button>
+      ) : null}
     </div>
   )
 }
