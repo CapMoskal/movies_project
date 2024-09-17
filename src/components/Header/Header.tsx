@@ -1,39 +1,35 @@
 import { ThemeSwitcher } from './ThemeSwitcher'
 import { HeaderBtns } from './HeaderBtns'
 import styles from './Header.module.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SearchBar } from './Searchbar/SearchBar'
 import { useDispatch, useSelector } from 'react-redux'
 import { TRootState } from '../../store'
+import { loadListBySearch } from '../../features/searchbar/searchbar-slice'
 
 export const Header = () => {
-  const dispatch = useDispatch()
-  const { error, status, movies } = useSelector(
-    (state: TRootState) => state.searchbar
-  )
-
   const [isSearching, setIsSearching] = useState(false)
   const [query, setQuery] = useState('')
-
-  // не нужно, будем брать из rtk
-  const [suggestions, setSuggestions] = useState<string[]>([])
 
   const handleSearch = () => {
     setIsSearching(true)
   }
 
+  const dispatch = useDispatch()
+  const { error, status, movies } = useSelector(
+    (state: TRootState) => state.searchbar
+  )
+
+  useEffect(() => {
+    if (query.length > 0) {
+      dispatch(loadListBySearch(query))
+    }
+  }, [query])
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setQuery(e.target.value)
-    // Здесь должна быть логика для получения предложений на основе query
-    // Например, можно использовать debounce и делать запрос к API
-
-    if (e.target.value.length > 0) {
-      setSuggestions(['Movie 1', 'Movie 2', 'Series 1']) // Заглушка
-    } else {
-      setSuggestions([])
-    }
   }
 
   return (
@@ -44,7 +40,7 @@ export const Header = () => {
           query={query}
           handleInputChange={handleInputChange}
           setIsSearching={setIsSearching}
-          suggestions={suggestions}
+          suggestions={movies}
         />
       ) : (
         <HeaderBtns searchSwitch={handleSearch} />

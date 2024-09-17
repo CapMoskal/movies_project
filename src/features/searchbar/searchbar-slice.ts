@@ -3,14 +3,14 @@ import { TMovie } from '../../config/types/apiResponseType'
 
 interface TInitialState {
   status: 'idle' | 'loading' | 'rejected' | 'received'
-  movies: TMovie[] | []
+  movies: TMovie[]
   error: string | undefined
 }
 
 const initialState: TInitialState = {
   status: 'idle',
   error: undefined,
-  movie: [],
+  movies: [],
 }
 
 export const loadListBySearch = createAsyncThunk<TMovie[]>(
@@ -29,7 +29,7 @@ const searchbarSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loadListBySearch.fulfilled, (state, action) => {
-        state.movie = action.payload
+        state.movies = action.payload
         state.status = 'received'
       })
       .addCase(loadListBySearch.pending, (state) => {

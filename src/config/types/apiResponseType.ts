@@ -83,7 +83,7 @@ export interface TMovie {
   alternativeName: string | null
   poster: TPoster
   persons: TPerson[]
-  logo: {
+  logo?: {
     url: string
   }
   backdrop: TPoster
