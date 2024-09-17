@@ -5,12 +5,14 @@ import * as api from './config/config'
 import { themeReducers } from './features/themeSwitcher/theme-slice'
 import { moviesCarouselReducer } from './features/moviesCarousel/movies-slice-carousel'
 import { moviesLinesReducer } from './features/moviesLines/movies-slice-lines'
+import { detailReducer } from './features/detailMovie/detail-slice'
 
 export const store = configureStore({
   reducer: {
     theme: themeReducers,
     moviesCarousel: moviesCarouselReducer,
     moviesLines: moviesLinesReducer,
+    detail: detailReducer,
   },
   devTools: true,
   middleware: (getDefaultMiddleware) =>
