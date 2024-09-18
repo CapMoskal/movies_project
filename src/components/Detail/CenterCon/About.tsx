@@ -16,7 +16,7 @@ export const About = ({ movie }: Props) => {
   }
   const length = {
     title: 'Длительность',
-    payload: movie.movieLength,
+    payload: movie.movieLength + ' мин',
   }
 
   const aboutList = [releaseDate, genres, length]

@@ -1,7 +1,10 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { TRootState } from '../../store'
-import { loadMoviesLines } from '../../features/moviesLines/movies-slice-lines'
+import {
+  clearLines,
+  loadMoviesLines,
+} from '../../features/moviesLines/movies-slice-lines'
 
 export const useMoviesLines = () => {
   const dispatch = useDispatch()
@@ -11,6 +14,10 @@ export const useMoviesLines = () => {
 
   useEffect(() => {
     dispatch(loadMoviesLines())
+
+    return () => {
+      dispatch(clearLines())
+    }
   }, [dispatch])
 
   return { genresObject, errorLines, statusLines }

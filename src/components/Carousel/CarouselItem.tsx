@@ -7,7 +7,8 @@ interface Props {
 }
 
 export const CarouselItem = ({ movie }: Props) => {
-  const backImg = movie.backdrop?.url || movie.poster?.url
+  const backImg =
+    movie.logo?.url || movie.backdrop?.url || movie.poster?.url
 
   return (
     <div className={styles['carousel-item']}>

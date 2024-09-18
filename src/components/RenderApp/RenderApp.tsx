@@ -1,16 +1,20 @@
-import { useWindowSize } from '../../hooks/useWindowSize'
-import { Main } from '../../pages/Main'
-import { Header } from '../Header/Header'
-import { MobileHeader } from '../MobileHeader/MobileHeader'
+import { Route, Routes } from 'react-router-dom'
+import { MainPage } from '../../pages/MainPage/MainPage'
+import { DetailPage } from '../../pages/DetailPage/DetailPage'
+import { NotFound } from '../../pages/NotFound'
+import { Layout } from '../Layout'
 
 export const RenderApp = () => {
-  const { width } = useWindowSize()
-
   return (
     <>
-      {width > 768 ? <Header /> : <MobileHeader />}
-      <Main />
-      {/* footer */}
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<MainPage />} />
+          <Route path="/:id" element={<DetailPage />} />
+
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </>
   )
 }

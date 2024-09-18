@@ -1,35 +1,31 @@
 import { ThemeSwitcher } from './ThemeSwitcher'
 import { HeaderBtns } from './HeaderBtns'
 import styles from './Header.module.scss'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { SearchBar } from './Searchbar/SearchBar'
-import { useDispatch, useSelector } from 'react-redux'
-import { TRootState } from '../../store'
-import { loadListBySearch } from '../../features/searchbar/searchbar-slice'
+import { TMovie } from '../../config/types/apiResponseType'
 
 export const Header = () => {
   const [isSearching, setIsSearching] = useState(false)
   const [query, setQuery] = useState('')
 
+  // не нужно, будем брать из rtk
+  const [suggestions, setSuggestions] = useState<TMovie[]>([])
+
   const handleSearch = () => {
     setIsSearching(true)
   }
-
-  const dispatch = useDispatch()
-  const { error, status, movies } = useSelector(
-    (state: TRootState) => state.searchbar
-  )
-
-  useEffect(() => {
-    if (query.length > 0) {
-      dispatch(loadListBySearch(query))
-    }
-  }, [query])
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setQuery(e.target.value)
+
+    if (e.target.value.length > 0) {
+      setSuggestions() // Заглушка
+    } else {
+      setSuggestions([])
+    }
   }
 
   return (
