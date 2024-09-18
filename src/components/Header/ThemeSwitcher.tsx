@@ -4,7 +4,7 @@ import styles from './Header.module.scss'
 
 export const ThemeSwitcher = () => {
   const [theme, toggleTheme] = useTheme()
-  const btnStyle = { color: '--colors-text', fontSize: '22px' }
+  const btnStyle = { color: '--colors-text', fontSize: '25px' }
 
   return (
     <div
