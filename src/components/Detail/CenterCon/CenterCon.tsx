@@ -12,11 +12,11 @@ export const CenterCon = ({ movie }: Props) => {
       <h1 className={styles['center-con--title']}>
         {movie.name || movie.alternativeName || movie.enName}
       </h1>
-      {movie.ageRating && (
+      {movie.ageRating ? (
         <h3 className={styles['center-con--age-rating']}>
           {movie.ageRating}+
         </h3>
-      )}
+      ) : null}
       <About movie={movie} />
     </div>
   )

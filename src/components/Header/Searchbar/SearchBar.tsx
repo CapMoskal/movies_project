@@ -1,5 +1,5 @@
-import { Input } from 'antd'
 import styles from '../Header.module.scss'
+import { Input } from 'antd'
 import { TMovie } from '../../../config/types/apiResponseType'
 import { SuggestionsBlock } from './SuggestionsBlock'
 
@@ -30,6 +30,7 @@ export const SearchBar = ({
         onChange={handleInputChange}
         placeholder="Введите название фильма или сериала..."
         onBlur={handleBlur}
+        allowClear
       />
       {suggestions.length > 0 && (
         <SuggestionsBlock
