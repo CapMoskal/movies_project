@@ -1,5 +1,5 @@
-import { TMovie } from '../../config/types/apiResponseType'
-import styles from './detailPage.module.scss'
+import { TMovie } from '../../../config/types/apiResponseType'
+import styles from '../detailPage.module.scss'
 
 interface Props {
   movie: TMovie

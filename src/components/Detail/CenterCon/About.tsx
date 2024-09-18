@@ -23,6 +23,7 @@ export const About = ({ movie }: Props) => {
 
   return (
     <div className={styles['center-con--about']}>
+      <h1>о {movie.type === 'movie' ? 'фильме' : 'сериале'}</h1>
       {aboutList.map((item) => {
         return (
           <div

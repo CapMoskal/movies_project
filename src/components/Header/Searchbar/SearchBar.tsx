@@ -30,8 +30,8 @@ export const SearchBar = ({
         <ul className={styles['header--searchbar-con--list']}>
           {suggestions.map((suggestion, index) =>
             suggestion.logo?.url ||
-            suggestion.poster.url ||
-            suggestion.backdrop.url ? (
+            suggestion.poster?.url ||
+            suggestion.backdrop?.url ? (
               <NavLink
                 to={`/${suggestion.id}`}
                 className={

@@ -4,29 +4,18 @@ import styles from './Header.module.scss'
 import { useState } from 'react'
 import { SearchBar } from './Searchbar/SearchBar'
 import { TMovie } from '../../config/types/apiResponseType'
+import { useSearch } from './Searchbar/useSearch'
 
 export const Header = () => {
   const [isSearching, setIsSearching] = useState(false)
   const [query, setQuery] = useState('')
-
-  // не нужно, будем брать из rtk
   const [suggestions, setSuggestions] = useState<TMovie[]>([])
 
   const handleSearch = () => {
     setIsSearching(true)
   }
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setQuery(e.target.value)
-
-    if (e.target.value.length > 0) {
-      setSuggestions() // Заглушка
-    } else {
-      setSuggestions([])
-    }
-  }
+  useSearch(query, setSuggestions)
 
   return (
     <header className={styles['header']}>
@@ -34,9 +23,9 @@ export const Header = () => {
       {isSearching ? (
         <SearchBar
           query={query}
-          handleInputChange={handleInputChange}
+          handleInputChange={(e) => setQuery(e.target.value)}
           setIsSearching={setIsSearching}
-          suggestions={movies}
+          suggestions={suggestions}
         />
       ) : (
         <HeaderBtns searchSwitch={handleSearch} />

@@ -1,7 +1,7 @@
 import { TMovie } from '../../config/types/apiResponseType'
 import { CenterCon } from './CenterCon/CenterCon'
 import styles from './detailPage.module.scss'
-import { LeftCon } from './LeftCon'
+import { LeftCon } from './LeftCon/LeftCon'
 import { RightCon } from './RightCon/RightCon'
 
 interface Props {
