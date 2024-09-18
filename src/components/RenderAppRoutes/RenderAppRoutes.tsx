@@ -4,7 +4,7 @@ import { DetailPage } from '../../pages/DetailPage/DetailPage'
 import { NotFound } from '../../pages/NotFound'
 import { Layout } from '../Layout'
 
-export const RenderApp = () => {
+export const RenderAppRoutes = () => {
   return (
     <>
       <Routes>

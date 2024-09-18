@@ -75,6 +75,7 @@ export interface TPerson {
   id: number
   photo: string
   name: string
+  enName: string
 }
 
 export interface TMovie {

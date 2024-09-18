@@ -1,7 +1,7 @@
 import { Input } from 'antd'
 import styles from '../Header.module.scss'
 import { TMovie } from '../../../config/types/apiResponseType'
-import { NavLink } from 'react-router-dom'
+import { SuggestionsBlock } from './SuggestionsBlock'
 
 interface Props {
   query: string
@@ -16,6 +16,11 @@ export const SearchBar = ({
   setIsSearching,
   suggestions,
 }: Props) => {
+  const handleBlur = () => {
+    setTimeout(() => {
+      setIsSearching(false)
+    }, 200)
+  }
   return (
     <div className={styles['header--searchbar-con']}>
       <Input
@@ -24,45 +29,13 @@ export const SearchBar = ({
         value={query}
         onChange={handleInputChange}
         placeholder="Введите название фильма или сериала..."
-        onBlur={() => setIsSearching(false)}
+        onBlur={handleBlur}
       />
       {suggestions.length > 0 && (
-        <ul className={styles['header--searchbar-con--list']}>
-          {suggestions.map((suggestion, index) =>
-            suggestion.logo?.url ||
-            suggestion.poster?.url ||
-            suggestion.backdrop?.url ? (
-              <NavLink
-                to={`/${suggestion.id}`}
-                className={
-                  styles['header--searchbar-con--list--item']
-                }
-                key={index}
-              >
-                <img
-                  className={
-                    styles['header--searchbar-con--list--item-img']
-                  }
-                  src={
-                    suggestion.logo?.url ||
-                    suggestion.poster?.url ||
-                    suggestion.backdrop?.url
-                  }
-                  alt="poster"
-                />
-                <h5
-                  className={
-                    styles['header--searchbar-con--list--item-title']
-                  }
-                >
-                  {suggestion.name ||
-                    suggestion.alternativeName ||
-                    suggestion.enName}
-                </h5>
-              </NavLink>
-            ) : null
-          )}
-        </ul>
+        <SuggestionsBlock
+          suggestions={suggestions}
+          setIsSearching={setIsSearching}
+        />
       )}
     </div>
   )

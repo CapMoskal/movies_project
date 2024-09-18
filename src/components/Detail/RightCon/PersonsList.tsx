@@ -15,15 +15,16 @@ export const PersonsList = ({ persons }: Props) => {
   const renderPersons = (persons: TPerson[]) => {
     if (isExpanded) {
       return persons.map((person, index) => {
-        if (index < maxLenght) {
-          return <li key={index}>{person.name}</li>
-        }
+        return index < maxLenght ? (
+          <li key={index}>{person.name || person.enName}</li>
+        ) : null
       })
     }
+
     return persons.map((person, index) => {
-      if (index < minLenght) {
-        return <li key={index}>{person.name}</li>
-      }
+      return index < minLenght ? (
+        <li key={index}>{person.name || person.enName}</li>
+      ) : null
     })
   }
 
