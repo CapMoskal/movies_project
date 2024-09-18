@@ -31,7 +31,9 @@ const initialState: TInitialState = {
 const moviesCarouselSlice = createSlice({
   name: '@@moviesCarousel',
   initialState,
-  reducers: {},
+  reducers: {
+    clearCarousel: () => initialState,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadMoviesCarousel.fulfilled, (state, action) => {
@@ -53,3 +55,4 @@ const moviesCarouselSlice = createSlice({
 })
 
 export const moviesCarouselReducer = moviesCarouselSlice.reducer
+export const { clearCarousel } = moviesCarouselSlice.actions

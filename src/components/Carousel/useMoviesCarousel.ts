@@ -1,6 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { TRootState } from '../../store'
-import { loadMoviesCarousel } from '../../features/moviesCarousel/movies-slice-carousel'
+import {
+  clearCarousel,
+  loadMoviesCarousel,
+} from '../../features/moviesCarousel/movies-slice-carousel'
 import { useEffect } from 'react'
 
 export const useMoviesCarousel = () => {
@@ -11,6 +14,10 @@ export const useMoviesCarousel = () => {
 
   useEffect(() => {
     dispatch(loadMoviesCarousel())
+
+    return () => {
+      dispatch(clearCarousel())
+    }
   }, [dispatch])
 
   return { errorCarousel, listCarousel, statusCarousel }

@@ -14,7 +14,11 @@ export const LineItem = ({ movie }: Props) => {
       className={styles['movie-list--card']}
     >
       <img
-        src={movie.poster.previewUrl || movie.backdrop.previewUrl}
+        src={
+          movie.logo?.url ||
+          movie.poster.previewUrl ||
+          movie.backdrop.previewUrl
+        }
         alt="movie poster"
         className={styles['movie-list--card--img']}
       />

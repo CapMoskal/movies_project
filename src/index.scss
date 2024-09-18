@@ -15,11 +15,15 @@ body[data-theme='dark'] {
   --colors-text: #f0f0f0;
   --colors-text-s: #cecece;
   --colors-bg: #0d0d0d;
+
+  --colors-bg-footer: #181818;
 }
 body[data-theme='light'] {
   --colors-text: #0d0d0d;
   --colors-text-s: #3e3e3e;
   --colors-bg: #f0f0f0;
+
+  --colors-bg-footer: #cbcbcb;
 }
 
 body {
@@ -36,4 +40,8 @@ body {
   --font-w-thin: 300;
   --font-w-mid: 500;
   --font-w-bold: 800;
+}
+
+.main {
+  height: 100vh;
 }

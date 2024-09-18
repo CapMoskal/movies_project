@@ -1,5 +1,5 @@
-import { TMovie } from '../../config/types/apiResponseType'
-import styles from './detailPage.module.scss'
+import { TMovie } from '../../../config/types/apiResponseType'
+import styles from '../detailPage.module.scss'
 
 interface Props {
   movie: TMovie
@@ -10,7 +10,12 @@ export const LeftCon = ({ movie }: Props) => {
     <div className={styles['left-con']}>
       <img
         className={styles['left-con--img']}
-        src={movie.poster.url}
+        src={
+          movie.poster.url ||
+          movie.poster.previewUrl ||
+          movie.backdrop.url ||
+          movie.backdrop.previewUrl
+        }
         alt="main poster"
       />
       {/* добавить возможность добавлять */}

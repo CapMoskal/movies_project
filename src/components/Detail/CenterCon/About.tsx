@@ -16,13 +16,14 @@ export const About = ({ movie }: Props) => {
   }
   const length = {
     title: 'Длительность',
-    payload: movie.movieLength,
+    payload: movie.movieLength + ' мин',
   }
 
   const aboutList = [releaseDate, genres, length]
 
   return (
     <div className={styles['center-con--about']}>
+      <h1>о {movie.type === 'movie' ? 'фильме' : 'сериале'}</h1>
       {aboutList.map((item) => {
         return (
           <div

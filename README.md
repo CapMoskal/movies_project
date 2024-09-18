@@ -1,18 +1,21 @@
 MOVIES PROJECT
 
-[] api config
---[x] get movies by genre
---[] get movies by name
---[x] get movies by id
---[x] get tops?
-
 [] react-router-dom
 --[x] расположение всего
 --[] detail page
-----[] возможность нажимать на актеров (деталка актеров) ????
+----[] добавление в список
 ----[] !!!!!адаптив!!!!!
 
 <!-- done -->
+
+[x] api config
+--[x] get movies by genre
+--[x] get movies by name
+--[x] get movies by id
+--[x] get tops?
+
+[x] searchbar
+--[x] list
 
 [x] main page
 --[x] carousel

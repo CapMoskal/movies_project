@@ -75,6 +75,7 @@ export interface TPerson {
   id: number
   photo: string
   name: string
+  enName: string
 }
 
 export interface TMovie {
@@ -83,6 +84,9 @@ export interface TMovie {
   alternativeName: string | null
   poster: TPoster
   persons: TPerson[]
+  logo?: {
+    url: string
+  }
   backdrop: TPoster
   enName: string | null
   type: TTypeOfCinema | null

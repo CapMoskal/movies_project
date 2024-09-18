@@ -1,7 +1,7 @@
-import { RenderApp } from './components/RenderApp/RenderApp'
+import { RenderAppRoutes } from './components/RenderAppRoutes/RenderAppRoutes'
 
 function App() {
-  return <RenderApp />
+  return <RenderAppRoutes />
 }
 
 export default App

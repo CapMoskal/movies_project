@@ -48,7 +48,9 @@ const initialState: TInitialState = {
 
 const moviesLinesSlice = createSlice({
   name: '@@moviesLines',
-  reducers: {},
+  reducers: {
+    clearLines: () => initialState,
+  },
   initialState,
   extraReducers: (builder) => {
     builder
@@ -71,3 +73,4 @@ const moviesLinesSlice = createSlice({
 })
 
 export const moviesLinesReducer = moviesLinesSlice.reducer
+export const { clearLines } = moviesLinesSlice.actions
