@@ -13,7 +13,7 @@ export const Layout = () => {
       <main className="main">
         <Outlet />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

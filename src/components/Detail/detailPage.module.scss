@@ -38,6 +38,7 @@
 
   .center-con {
     @include verticalCons();
+    width: 60%;
 
     &--title {
       font-size: 27px;
@@ -50,13 +51,20 @@
     }
 
     &--about {
+      width: 100%;
+
       & h1 {
         margin: 20px 0 0 0;
       }
 
       &-item {
+        width: 100%;
         display: flex;
         justify-content: space-between;
+
+        & p {
+          width: 30%;
+        }
       }
     }
   }
@@ -91,6 +99,30 @@
         &:hover {
           background-color: var(--colors-orange);
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .detail-con {
+    overflow-x: hidden;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 5px;
+    padding: 0 7%;
+
+    .left-con {
+      &--img {
+        width: 100%;
+      }
+    }
+
+    .center-con {
+      width: 100%;
+
+      &--title {
+        width: 100%;
       }
     }
   }
