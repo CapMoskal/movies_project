@@ -3,6 +3,7 @@ import { TMovie } from '../../config/types/apiResponseType'
 import styles from './Lines.module.scss'
 import { LineItem } from './LineItem'
 import { useRef } from 'react'
+import { useWindowSize } from '../../hooks/useWindowSize'
 
 interface Props {
   title: string
@@ -23,14 +24,18 @@ export const Line = ({ title, movies }: Props) => {
     }
   }
 
+  const { width } = useWindowSize()
+
   return (
     <div className={styles['container']}>
       <h1>{title}</h1>
       <div className={styles['line']}>
-        <LeftOutlined
-          className={styles['line--scroll-btn']}
-          onClick={scrollLeft}
-        ></LeftOutlined>
+        {width > 768 && (
+          <LeftOutlined
+            className={styles['line--scroll-btn']}
+            onClick={scrollLeft}
+          ></LeftOutlined>
+        )}
 
         <div className={styles['movie-list']} ref={listRef}>
           {movies.map((movie) => (
@@ -38,10 +43,12 @@ export const Line = ({ title, movies }: Props) => {
           ))}
         </div>
 
-        <RightOutlined
-          className={styles['line--scroll-btn']}
-          onClick={scrollRight}
-        ></RightOutlined>
+        {width > 768 && (
+          <RightOutlined
+            className={styles['line--scroll-btn']}
+            onClick={scrollRight}
+          ></RightOutlined>
+        )}
       </div>
     </div>
   )

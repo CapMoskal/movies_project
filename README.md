@@ -1,12 +1,11 @@
 MOVIES PROJECT
 
-[] react-router-dom
---[x] расположение всего
---[] detail page
-----[] добавление в список
-----[] !!!!!адаптив!!!!!
-
 <!-- done -->
+
+[x] react-router-dom
+--[x] расположение всего
+--[x] detail page
+----[x] !!!!!адаптив!!!!!
 
 [x] api config
 --[x] get movies by genre
