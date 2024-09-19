@@ -9,3 +9,10 @@
   top: 5px;
   left: 5px;
 }
+
+@media (max-width: 768px) {
+  .rating {
+    font-size: 14px;
+    padding: 3px 7px;
+  }
+}

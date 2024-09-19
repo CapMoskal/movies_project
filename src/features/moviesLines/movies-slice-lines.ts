@@ -1,34 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { TMovie } from '../../config/types/apiResponseType'
-import { topGenres } from '../../config/config'
-
-interface TDocs {
-  docs: TMovie[]
-}
-interface TData {
-  data: TDocs
-}
+import { getObjectOfGenres } from '../getObjectOfGenres'
 
 interface TInitialState {
   statusLines: 'idle' | 'loading' | 'rejected' | 'received'
   genresObject: { [genre: string]: TMovie[] }
   errorLines: string | undefined
-}
-
-const getObjectOfGenres = (movies: TMovie[]) => {
-  const objectWithGenres: { [genre: string]: TMovie[] } = {}
-
-  movies.forEach((movie) => {
-    movie.genres?.forEach((genre) => {
-      const isInTopGenres =
-        !objectWithGenres[genre.name] &&
-        topGenres.includes(genre.name)
-
-      if (isInTopGenres) objectWithGenres[genre.name] = []
-      objectWithGenres[genre.name]?.push(movie)
-    })
-  })
-  return objectWithGenres
 }
 
 export const loadMoviesLines = createAsyncThunk<TMovie[]>(

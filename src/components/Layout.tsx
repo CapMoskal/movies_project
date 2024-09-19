@@ -8,12 +8,12 @@ export const Layout = () => {
   const { width } = useWindowSize()
 
   return (
-    <>
+    <div className="wrapper">
       {width > 768 ? <Header /> : <MobileHeader />}
-      <main className="main">
+      <main>
         <Outlet />
       </main>
-      {/* <Footer /> */}
-    </>
+      <Footer />
+    </div>
   )
 }
