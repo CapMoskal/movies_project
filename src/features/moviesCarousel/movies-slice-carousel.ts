@@ -6,12 +6,6 @@ interface TInitialState {
   listCarousel: TMovie[]
   errorCarousel: string | undefined
 }
-interface TDocs {
-  docs: TMovie[]
-}
-interface TData {
-  data: TDocs
-}
 
 export const loadMoviesCarousel = createAsyncThunk<TMovie[]>(
   '@@moviesCarousel/load-movies-carousel',

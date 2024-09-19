@@ -15,9 +15,7 @@ export const MobileHeader = () => {
   }
 
   useSearch(query, setSuggestions)
-  // при нажатии на кнопку поиска сверху вместо всего появляется поле ввода
-  // добавить кнопку закрытия поисковой строрки
-  // список должан быть по ширине экрана
+
   return (
     <header className={styles['header']}>
       {isSearching ? (

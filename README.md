@@ -11,7 +11,6 @@ MOVIES PROJECT
 --[x] get movies by genre
 --[x] get movies by name
 --[x] get movies by id
---[x] get tops?
 
 [x] searchbar
 --[x] list

@@ -1,6 +1,5 @@
 import { CarouselRender } from '../../components/Carousel/CarouselRender'
 import { LinesRender } from '../../components/Lines/LinesRender'
-import styles from '../../components/MainPage/MainPage.module.scss'
 import { useMoviesCarousel } from '../../components/Carousel/useMoviesCarousel'
 import { useMoviesLines } from '../../components/Lines/useMoviesLines'
 import { Loading } from '../../components/Loading/Loading'
@@ -12,7 +11,7 @@ export const MainPage = () => {
 
   if (statusCarousel === 'loading') return <Loading />
   return (
-    <div className={styles['main-page-con']}>
+    <div>
       <CarouselRender
         list={listCarousel}
         status={statusCarousel}

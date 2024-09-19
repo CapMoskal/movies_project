@@ -7,8 +7,8 @@ interface Props {
   movie: TMovie
 }
 
-export const LineItem = ({ movie }: Props) => {
-  return movie.poster || movie.backdrop ? (
+export const LineItem = ({ movie }: Props) =>
+  movie.poster || movie.backdrop ? (
     <NavLink
       to={`/${movie.id}`}
       className={styles['movie-list--card']}
@@ -27,4 +27,3 @@ export const LineItem = ({ movie }: Props) => {
       ) : null}
     </NavLink>
   ) : null
-}
